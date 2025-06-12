@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nimi Crochet - Creaciones únicas tejidas a mano. Amigurumis, ropa y accesorios de crochet.">
+    <meta name="theme-color" content="#8B4513">
+    <title>Nimi Crochet</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/nimi-logo.jpg">
+    
+    <!-- Precargar recursos críticos -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="images/nimi-logo.jpg" as="image" fetchpriority="high">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+</head>
+<body>
+    <!-- Pantalla de carga -->
+    <div class="loading-screen">
+        <img src="images/nimi-logo.jpg" alt="Nimi Crochet Logo" width="120" height="120">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/nimi-logo.jpg" alt="Nimi Crochet Logo" width="60" height="60">
+                </a>
+            </div>
+            <div class="title-container">
+                <h1>NIMI CROCHET</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#productos">Productos ▼</a>
+                    <ul class="dropdown-content">
+                        <li><a href="amigurumis.html">Amigurumis</a></li>
+                        <li><a href="ropa.html">Ropa</a></li>
+                        <li><a href="accesorios.html">Accesorios</a></li>
+                    </ul>
+                </li>
+                <li><a href="cursos.html">Cursos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li class="cart-container">
+                    <a href="#" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <div class="cart-dropdown">
+                        <div class="cart-items">
+                            <!-- Los items del carrito se agregarán aquí dinámicamente -->
+                        </div>
+                        <div class="discount-code">
+                            <input type="text" placeholder="Código de descuento" id="discountCode">
+                            <button onclick="applyDiscount()">Aplicar</button>
+                        </div>
+                        <div class="cart-total">
+                            <span>Total: $<span id="cartTotal">0.00</span></span>
+                        </div>
+                        <button class="checkout-btn" onclick="goToCheckout()">Ir a pagar</button>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="video-background">
+                <!-- Video para escritorio -->
+                <video id="hero-video-desktop" class="hero-video" playsinline autoplay muted loop>
+                    <source src="images/Itachi's Mangekyo Sharingan [Eyes Only] (4K).mp4" type="video/mp4">
+                </video>
+                <!-- Video para móviles -->
+                <video id="hero-video-mobile" class="hero-video" playsinline autoplay muted loop>
+                    <source src="images/Naruto sharingan edit -- naruto edit -- [4k edit] amv -- Sharingan Live Wallpaper.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="hero-content">
+                <h1>Bienvenidos a Nimi Crochet</h1>
+                <p>Creaciones únicas hechas con amor</p>
+                <div class="social-hero">
+                    <a href="https://www.instagram.com/nimi.crochet/?igsh=MWNvMTlncTQzc3IxMg%3D%3D#" target="_blank" rel="noopener" class="social-link">
+                        <i class="fab fa-instagram"></i> @nimi.crochet
+                    </a>
+                    <a href="https://www.tiktok.com/@nimi.crochet?_t=ZS-8wsSvljiDTA&_r=1" target="_blank" rel="noopener" class="social-link">
+                        <i class="fab fa-tiktok"></i> @nimi.crochet
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="productos" class="productos">
+            <h2>Nuestros Productos</h2>
+            <div class="productos-grid">
+                <!-- Amigurumis -->
+                <div class="producto-card">
+                    <a href="amigurumis.html">
+                        <img src="images/Amigurumi/IMG_20240630_212517631.jpg" alt="Amigurumi" loading="lazy" width="300" height="300">
+                        <div class="producto-info">
+                            <h3>Amigurumis</h3>
+                            <p>Muñecos tejidos a mano con amor</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Gorros -->
+                <div class="producto-card">
+                    <a href="ropa.html">
+                        <img src="images/Gorros/IMG_20230927_145547.jpg" alt="Gorro" loading="lazy" width="300" height="300">
+                        <div class="producto-info">
+                            <h3>Ropa</h3>
+                            <p>Prendas únicas y personalizadas</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Llaveros -->
+                <div class="producto-card">
+                    <a href="accesorios.html">
+                        <img src="images/Llaveros/IMG_20221014_081339.jpg" alt="Llavero" loading="lazy" width="300" height="300">
+                        <div class="producto-info">
+                            <h3>Accesorios</h3>
+                            <p>Detalles especiales para tu día a día</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="contacto">
+            <h2>Contacto</h2>
+            <div class="social-contact">
+                <a href="https://www.instagram.com/nimi.crochet/?igsh=MWNvMTlncTQzc3IxMg%3D%3D#" target="_blank" rel="noopener" class="social-button instagram">
+                    <i class="fab fa-instagram"></i> Síguenos en Instagram
+                </a>
+                <a href="https://www.tiktok.com/@nimi.crochet?_t=ZS-8wsSvljiDTA&_r=1" target="_blank" rel="noopener" class="social-button tiktok">
+                    <i class="fab fa-tiktok"></i> Síguenos en TikTok
+                </a>
+            </div>
+            <form id="contactForm">
+                <input type="text" placeholder="Nombre" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Mensaje" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Sección de Medios de Pago -->
+    <section class="medios-pago">
+        <div class="container">
+            <h2>Medios de Pago</h2>
+            <div class="payment-logos">
+                <img src="images/nequi-logo.png" alt="Pago con Nequi" class="payment-logo">
+                <img src="images/dale-logo.png" alt="Pago con Dale" class="payment-logo">
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-social">
+                <h3>Síguenos en redes sociales</h3>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/nimi.crochet/?igsh=MWNvMTlncTQzc3IxMg%3D%3D#" target="_blank" rel="noopener" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@nimi.crochet?_t=ZS-8wsSvljiDTA&_r=1" target="_blank" rel="noopener" class="social-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+            <p>&copy; 2025 Nimi Crochet. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="main.js" defer></script>
+</body>
+</html> 

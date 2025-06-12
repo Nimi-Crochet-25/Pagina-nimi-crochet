@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Amigurumis tejidos a mano - Nimi Crochet. Muñecos y figuras únicas hechas con amor.">
+    <meta name="theme-color" content="#8B4513">
+    <title>Amigurumis - Nimi Crochet</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Precargar imágenes críticas -->
+    <link rel="preload" href="images/nimi-logo.jpg" as="image">
+    <link rel="preload" href="images/Amigurumi/IMG_20250420_111911.jpg" as="image" fetchpriority="high">
+    <link rel="preload" href="images/Amigurumi/IMG_20240630_212517631.jpg" as="image">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <a href="index.html#inicio">
+                    <img src="images/nimi-logo.jpg" alt="Nimi Crochet Logo" width="60" height="60" fetchpriority="high">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#productos">Productos ▼</a>
+                    <ul class="dropdown-content">
+                        <li><a href="amigurumis.html">Amigurumis</a></li>
+                        <li><a href="ropa.html">Ropa</a></li>
+                        <li><a href="accesorios.html">Accesorios</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+                <li class="cart-container">
+                    <a href="#" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <div class="cart-dropdown">
+                        <div class="cart-items">
+                            <!-- Los items del carrito se agregarán aquí dinámicamente -->
+                        </div>
+                        <div class="discount-code">
+                            <input type="text" placeholder="Código de descuento" id="discountCode">
+                            <button onclick="applyDiscount()">Aplicar</button>
+                        </div>
+                        <div class="cart-total">
+                            <span>Total: $<span id="cartTotal">0.00</span></span>
+                        </div>
+                        <button class="checkout-btn" onclick="goToCheckout()">Ir a pagar</button>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="categoria-principal">
+            <h1>Amigurumis</h1>
+            <p class="descripcion-categoria">Descubre nuestra colección de tiernos amigurumis tejidos a mano con amor y dedicación.</p>
+            
+            <div class="productos-grid">
+                <div class="producto-card">
+                    <img src="images/Amigurumi/IMG_20250420_111911.jpg" 
+                         alt="Amigurumi Personalizado" 
+                         width="300" 
+                         height="300"
+                         loading="eager"
+                         fetchpriority="high">
+                    <h4>Amigurumi Personalizado</h4>
+                    <div class="quantity-selector">
+                        <button onclick="decrementQuantity('ami1')">-</button>
+                        <input type="number" id="quantity-ami1" value="1" min="1" max="10">
+                        <button onclick="incrementQuantity('ami1')">+</button>
+                    </div>
+                    <button class="comprar-btn" onclick="addToCart('ami1', 'Amigurumi Personalizado')">
+                        Agregar al carrito
+                    </button>
+                </div>
+
+                <div class="producto-card">
+                    <img src="images/Amigurumi/IMG_20240630_212517631.jpg" 
+                         alt="Amigurumi Especial" 
+                         width="300" 
+                         height="300"
+                         loading="lazy"
+                         decoding="async">
+                    <h4>Amigurumi Especial</h4>
+                    <div class="quantity-selector">
+                        <button onclick="decrementQuantity('ami2')">-</button>
+                        <input type="number" id="quantity-ami2" value="1" min="1" max="10">
+                        <button onclick="incrementQuantity('ami2')">+</button>
+                    </div>
+                    <button class="comprar-btn" onclick="addToCart('ami2', 'Amigurumi Especial')">
+                        Agregar al carrito
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-social">
+                <h3>Síguenos en redes sociales</h3>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/nimi.crochet/?igsh=MWNvMTlncTQzc3IxMg%3D%3D#" target="_blank" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@nimi.crochet?_t=ZS-8wsSvljiDTA&_r=1" target="_blank" class="social-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+            <p>&copy; 2025 Nimi Crochet. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html> 

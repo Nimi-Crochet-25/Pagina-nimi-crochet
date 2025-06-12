@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Nimi Crochet</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <a href="index.html#inicio">
+                    <img src="images/nimi-logo.jpg" alt="Nimi Crochet Logo">
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="checkout-page">
+        <div class="checkout-container">
+            <h1>Finalizar Compra</h1>
+            
+            <!-- Progreso del checkout -->
+            <div class="checkout-progress">
+                <div class="progress-step active">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Carrito</span>
+                </div>
+                <div class="progress-step">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Pago</span>
+                </div>
+                <div class="progress-step">
+                    <i class="fas fa-truck"></i>
+                    <span>Envío</span>
+                </div>
+            </div>
+
+            <div class="checkout-grid">
+                <!-- Columna izquierda: Formulario -->
+                <div class="checkout-form">
+                    <section class="form-section">
+                        <h2>Información Personal</h2>
+                        <div class="form-group">
+                            <input type="text" placeholder="Nombre completo" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Correo electrónico" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Teléfono" required>
+                        </div>
+                    </section>
+
+                    <section class="form-section">
+                        <h2>Método de Pago</h2>
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <input type="radio" name="payment" id="nequi" value="nequi">
+                                <label for="nequi">
+                                    <img src="images/nequi-logo.png" alt="Nequi">
+                                    Nequi
+                                </label>
+                            </div>
+                            <div class="payment-method">
+                                <input type="radio" name="payment" id="dale" value="dale">
+                                <label for="dale">
+                                    <img src="images/dale-logo.png" alt="Dale">
+                                    Dale
+                                </label>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="form-section">
+                        <h2>Dirección de Envío</h2>
+                        <div class="form-group">
+                            <input type="text" placeholder="Dirección" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Apartamento, suite, etc. (opcional)">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" placeholder="Ciudad" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" placeholder="Código Postal" required>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Columna derecha: Resumen del pedido -->
+                <div class="order-summary">
+                    <h2>Resumen del Pedido</h2>
+                    <div class="cart-items" id="checkoutCartItems">
+                        <!-- Los items se cargarán dinámicamente -->
+                    </div>
+                    
+                    <div class="discount-section">
+                        <div class="discount-code">
+                            <input type="text" placeholder="Código de descuento" id="checkoutDiscountCode">
+                            <button onclick="applyCheckoutDiscount()">Aplicar</button>
+                        </div>
+                    </div>
+
+                    <div class="order-totals">
+                        <div class="subtotal">
+                            <span>Subtotal</span>
+                            <span id="subtotalAmount">$0.00</span>
+                        </div>
+                        <div class="shipping">
+                            <span>Envío</span>
+                            <span id="shippingAmount">$5.00</span>
+                        </div>
+                        <div class="discount">
+                            <span>Descuento</span>
+                            <span id="discountAmount">-$0.00</span>
+                        </div>
+                        <div class="total">
+                            <span>Total</span>
+                            <span id="totalAmount">$0.00</span>
+                        </div>
+                    </div>
+
+                    <button class="complete-order-btn" onclick="completeOrder()">
+                        Completar Pedido
+                    </button>
+
+                    <a href="index.html" class="continue-shopping">
+                        <i class="fas fa-arrow-left"></i>
+                        Continuar Comprando
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Nimi Crochet. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cargar los items del carrito desde localStorage
+            loadCheckoutItems();
+        });
+
+        function loadCheckoutItems() {
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const container = document.getElementById('checkoutCartItems');
+            let subtotal = 0;
+
+            container.innerHTML = '';
+            
+            cartItems.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+
+                const itemElement = document.createElement('div');
+                itemElement.className = 'checkout-item';
+                itemElement.innerHTML = `
+                    <div class="item-info">
+                        <span class="item-name">${item.name}</span>
+                        <span class="item-quantity">x${item.quantity}</span>
+                    </div>
+                    <span class="item-price">$${itemTotal.toFixed(2)}</span>
+                `;
+                container.appendChild(itemElement);
+            });
+
+            // Actualizar totales
+            document.getElementById('subtotalAmount').textContent = `$${subtotal.toFixed(2)}`;
+            updateOrderTotal();
+        }
+
+        function updateOrderTotal() {
+            const subtotal = parseFloat(document.getElementById('subtotalAmount').textContent.slice(1));
+            const shipping = parseFloat(document.getElementById('shippingAmount').textContent.slice(1));
+            const discount = parseFloat(document.getElementById('discountAmount').textContent.slice(2));
+            
+            const total = subtotal + shipping - discount;
+            document.getElementById('totalAmount').textContent = `$${total.toFixed(2)}`;
+        }
+
+        function applyCheckoutDiscount() {
+            const code = document.getElementById('checkoutDiscountCode').value;
+            // Aquí puedes implementar la lógica de validación de códigos
+            alert('Código de descuento aplicado: ' + code);
+        }
+
+        function completeOrder() {
+            // Aquí puedes implementar la lógica de procesamiento del pedido
+            alert('¡Gracias por tu compra! Tu pedido ha sido procesado.');
+            // Limpiar el carrito
+            localStorage.removeItem('cartItems');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gorros y ropa tejida a mano - Nimi Crochet. Prendas únicas y personalizadas.">
+    <title>Ropa - Nimi Crochet</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Precargar imágenes críticas -->
+    <link rel="preload" href="images/nimi-logo.jpg" as="image">
+    <link rel="preload" href="images/Gorros/IMG_20230525_223024.jpg" as="image" fetchpriority="high">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <a href="index.html#inicio">
+                    <img src="images/nimi-logo.jpg" alt="Nimi Crochet Logo" width="60" height="60" fetchpriority="high">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#productos">Productos ▼</a>
+                    <ul class="dropdown-content">
+                        <li><a href="amigurumis.html">Amigurumis</a></li>
+                        <li><a href="ropa.html">Ropa</a></li>
+                        <li><a href="accesorios.html">Accesorios</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+                <li class="cart-container">
+                    <a href="#" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <div class="cart-dropdown">
+                        <div class="cart-items">
+                            <!-- Los items del carrito se agregarán aquí dinámicamente -->
+                        </div>
+                        <div class="discount-code">
+                            <input type="text" placeholder="Código de descuento" id="discountCode">
+                            <button onclick="applyDiscount()">Aplicar</button>
+                        </div>
+                        <div class="cart-total">
+                            <span>Total: $<span id="cartTotal">0.00</span></span>
+                        </div>
+                        <button class="checkout-btn" onclick="goToCheckout()">Ir a pagar</button>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="categoria-principal">
+            <h1>Ropa de Crochet</h1>
+            <p class="descripcion-categoria">Prendas únicas tejidas a mano con los mejores materiales y diseños exclusivos.</p>
+            
+            <div class="productos-grid">
+                <div class="producto-card">
+                    <img src="images/Gorros/IMG_20230525_223024.jpg" 
+                         alt="Gorro Bicolor" 
+                         width="300" 
+                         height="300"
+                         loading="eager"
+                         fetchpriority="high">
+                    <h4>Gorro Bicolor Rosa y Negro</h4>
+                    <div class="quantity-selector">
+                        <button onclick="decrementQuantity('gorro1')">-</button>
+                        <input type="number" id="quantity-gorro1" value="1" min="1" max="10">
+                        <button onclick="incrementQuantity('gorro1')">+</button>
+                    </div>
+                    <button class="comprar-btn" onclick="addToCart('gorro1', 'Gorro Bicolor Rosa y Negro')">
+                        Agregar al carrito
+                    </button>
+                </div>
+
+                <div class="producto-card">
+                    <img src="images/Gorros/IMG_20230927_145140.jpg" 
+                         alt="Gorro en Maniquí" 
+                         width="300" 
+                         height="300"
+                         loading="lazy"
+                         decoding="async">
+                    <h4>Gorro Tejido</h4>
+                    <div class="quantity-selector">
+                        <button onclick="decrementQuantity('gorro2')">-</button>
+                        <input type="number" id="quantity-gorro2" value="1" min="1" max="10">
+                        <button onclick="incrementQuantity('gorro2')">+</button>
+                    </div>
+                    <button class="comprar-btn" onclick="addToCart('gorro2', 'Gorro Tejido')">
+                        Agregar al carrito
+                    </button>
+                </div>
+
+                <div class="producto-card">
+                    <img src="images/Gorros/IMG_20221114_171306.jpg" 
+                         alt="Gorro en Mano" 
+                         width="300" 
+                         height="300"
+                         loading="lazy"
+                         decoding="async">
+                    <h4>Gorro de Invierno</h4>
+                    <div class="quantity-selector">
+                        <button onclick="decrementQuantity('gorro3')">-</button>
+                        <input type="number" id="quantity-gorro3" value="1" min="1" max="10">
+                        <button onclick="incrementQuantity('gorro3')">+</button>
+                    </div>
+                    <button class="comprar-btn" onclick="addToCart('gorro3', 'Gorro de Invierno')">
+                        Agregar al carrito
+                    </button>
+                </div>
+
+                <div class="producto-card">
+                    <img src="images/Gorros/IMG_20221114_162343.jpg" 
+                         alt="Gorro en Mano" 
+                         width="300" 
+                         height="300"
+                         loading="lazy"
+                         decoding="async">
+                    <h4>Gorro de Invierno Clásico</h4>
+                    <div class="quantity-selector">
+                        <button onclick="decrementQuantity('gorro4')">-</button>
+                        <input type="number" id="quantity-gorro4" value="1" min="1" max="10">
+                        <button onclick="incrementQuantity('gorro4')">+</button>
+                    </div>
+                    <button class="comprar-btn" onclick="addToCart('gorro4', 'Gorro de Invierno Clásico')">
+                        Agregar al carrito
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-social">
+                <h3>Síguenos en redes sociales</h3>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/nimi.crochet/?igsh=MWNvMTlncTQzc3IxMg%3D%3D#" target="_blank" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@nimi.crochet?_t=ZS-8wsSvljiDTA&_r=1" target="_blank" class="social-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+            <p>&copy; 2025 Nimi Crochet. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html> 
