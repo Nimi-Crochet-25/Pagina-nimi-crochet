@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito - Nimi Crochet</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Nimi Crochet</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Productos ▼</a>
+                    <div class="dropdown-content">
+                        <a href="ropa.html">Ropa</a>
+                        <a href="accesorios.html">Accesorios</a>
+                        <a href="amigurumis.html">Amigurumis</a>
+                    </div>
+                </li>
+                <li><a href="index.html#sobremi">Sobre mí</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="checkout-main">
+        <div class="checkout-container">
+            <div class="checkout-steps">
+                <form id="checkout-form">
+                    <div class="checkout-step" id="step-1">
+                        <div class="step-header active" onclick="toggleStep(1)">
+                            <span class="step-number">1</span> Datos Personales
+                        </div>
+                        <div class="step-content">
+                            <p>Solicitamos únicamente la información esencial para la finalización de la compra.</p>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="correo">Correo Electrónico *</label>
+                                    <input type="email" id="correo" name="correo" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="nombre">Nombre *</label>
+                                    <input type="text" id="nombre" name="nombre" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="apellido">Apellido *</label>
+                                    <input type="text" id="apellido" name="apellido" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="tipo-doc">Tipo de documento</label>
+                                    <select id="tipo-doc" name="tipo-doc" required>
+                                        <option value="">Selecciona un tipo</option>
+                                        <option value="cc">Cédula de ciudadanía</option>
+                                        <option value="ce">Cédula de extranjería</option>
+                                        <option value="ti">Tarjeta de identidad</option>
+                                        <option value="pasaporte">Pasaporte</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="num-doc">Número de identificación *</label>
+                                    <input type="text" id="num-doc" name="num-doc" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="celular">Teléfono / Móvil *</label>
+                                    <input type="tel" id="celular" name="celular" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="direccion">Dirección *</label>
+                                    <input type="text" id="direccion" name="direccion" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="barrio">Barrio *</label>
+                                    <input type="text" id="barrio" name="barrio" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="codigo-postal">Código Postal *</label>
+                                    <input type="text" id="codigo-postal" name="codigo-postal" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <label><input type="checkbox" name="newsletter"> Quiero recibir el newsletter con promociones.</label>
+                            </div>
+                            <button type="button" class="step-btn" onclick="nextStep(1)">Guardar y continuar</button>
+                        </div>
+                    </div>
+                    <div class="checkout-step" id="step-2">
+                        <div class="step-header" onclick="toggleStep(2)">
+                            <span class="step-number">2</span> Envío
+                        </div>
+                        <div class="step-content" style="display:none;">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="departamento">Departamento</label>
+                                    <select id="departamento" name="departamento" required>
+                                        <option value="">Selecciona un departamento</option>
+                                        <option value="Cundinamarca">Cundinamarca</option>
+                                        <option value="Bogotá">Bogotá</option>
+                                        <option value="Antioquia">Antioquia</option>
+                                        <option value="Valle del Cauca">Valle del Cauca</option>
+                                        <!-- Agrega más departamentos si lo deseas -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="municipio">Municipio</label>
+                                    <select id="municipio" name="municipio" required>
+                                        <option value="">Selecciona un municipio</option>
+                                        <option value="Soacha">Soacha</option>
+                                        <option value="Bogotá">Bogotá</option>
+                                        <option value="Medellín">Medellín</option>
+                                        <option value="Cali">Cali</option>
+                                        <!-- Agrega más municipios si lo deseas -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group" style="flex:2;">
+                                    <label for="direccion-envio">Calle</label>
+                                    <input type="text" id="direccion-envio" name="direccion-envio" placeholder="Dirección" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group" style="flex:2;">
+                                    <label for="direccion-comp">Información adicional (ej.: apto. 201)</label>
+                                    <input type="text" id="direccion-comp" name="direccion-comp" placeholder="Dirección Complementaria">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="barrio-envio">Barrio</label>
+                                    <input type="text" id="barrio-envio" name="barrio-envio" placeholder="Opcional">
+                                </div>
+                                <div class="form-group">
+                                    <label for="destinatario">Destinatario</label>
+                                    <input type="text" id="destinatario" name="destinatario" value="" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="telefono-envio">Teléfono</label>
+                                    <input type="tel" id="telefono-envio" name="telefono-envio" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <label style="font-weight:500; margin-bottom:0.5rem;">Método de entrega</label>
+                                <div class="delivery-method">
+                                    <input type="radio" id="entrega-normal" name="metodo-entrega" checked>
+                                    <label for="entrega-normal">De 1 a 4 días hábiles</label>
+                                    <span class="delivery-price">$13.900</span>
+                                </div>
+                            </div>
+                            <button type="button" class="step-btn" onclick="nextStep(2)">Ir para el pago</button>
+                        </div>
+                    </div>
+                    <div class="checkout-step" id="step-3">
+                        <div class="step-header" onclick="toggleStep(3)">
+                            <span class="step-number">3</span> Pago
+                        </div>
+                        <div class="step-content" style="display:none;">
+                            <div class="payment-methods-select">
+                                <button type="button" class="payment-btn" onclick="selectPayment('nequi')">
+                                    <img src="images/Medios de pago/nequi-logo-png.png" alt="Nequi" class="pago-logo"> Nequi
+                                </button>
+                                <button type="button" class="payment-btn" onclick="selectPayment('dale')">
+                                    <img src="images/Medios de pago/Dale logo.png" alt="Dale" class="pago-logo"> Dale
+                                </button>
+                            </div>
+                            <div id="payment-instructions" class="payment-instructions" style="display:none;"></div>
+                            <button type="submit" class="checkout-btn" style="margin-top:2rem;">Finalizar compra</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <aside class="checkout-summary">
+                <h2>Resumen de compra</h2>
+                <div class="promo-row">
+                    <input type="text" id="discount-code" placeholder="¿Tienes un código promocional?">
+                    <button onclick="applyDiscount()">Aplicar</button>
+                </div>
+                <div class="summary-totals">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="cart-subtotal">$0</span>
+                    </div>
+                    <div class="summary-row total-row">
+                        <span>Total</span>
+                        <span id="cart-total">$0</span>
+                    </div>
+                </div>
+                <div id="summary-items" class="summary-items-list">
+                    <!-- Aquí se mostrarán los productos elegidos con imagen, nombre, cantidad y precio -->
+                </div>
+            </aside>
+        </div>
+    </main>
+    <section class="cart-section">
+        <h2>Productos elegidos</h2>
+        <div id="cart-items">
+            <!-- Los items del carrito se cargarán dinámicamente -->
+        </div>
+        <form class="shipping-form">
+            <h3>Datos de envío</h3>
+            <div class="form-group">
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="direccion">Dirección</label>
+                <input type="text" id="direccion" name="direccion" required>
+            </div>
+            <div class="form-group">
+                <label for="barrio">Barrio</label>
+                <input type="text" id="barrio" name="barrio" required>
+            </div>
+            <div class="form-group">
+                <label for="codigo-postal">Código Postal</label>
+                <input type="text" id="codigo-postal" name="codigo-postal" required>
+            </div>
+        </form>
+        <div class="cart-summary">
+            <div class="discount-code">
+                <input type="text" id="discount-code" placeholder="Código de descuento">
+                <button onclick="applyDiscount()">Aplicar</button>
+            </div>
+            <div class="total">
+                <h3>Total: $<span id="cart-total">0</span></h3>
+            </div>
+        </div>
+    </section>
+    <section class="payment-section">
+        <h2>Medios de Pago</h2>
+        <div class="payment-icons">
+            <img src="images/Medios de pago/nequi-logo-png.png" alt="Nequi">
+            <img src="images/Medios de pago/Dale logo.png" alt="Dale">
+        </div>
+        <button class="checkout-btn" onclick="goToCheckout()">Ir a Pagar</button>
+    </section>
+    <section class="shipping-section">
+        <h2>Envío</h2>
+        <p>El envío se coordinará una vez realizado el pago. Nos pondremos en contacto contigo para confirmar los detalles.</p>
+    </section>
+    <script src="main.js"></script>
+    <script src="cart.js"></script>
+    <script>
+    function renderSummaryItems() {
+        const items = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const container = document.getElementById('summary-items');
+        let subtotal = 0;
+        container.innerHTML = '';
+        items.forEach(item => {
+            subtotal += item.price * item.quantity;
+            const div = document.createElement('div');
+            div.className = 'summary-item';
+            div.innerHTML = `
+                <img src="${item.image}" alt="${item.name}" class="summary-item-img">
+                <div class="summary-item-info">
+                    <div class="summary-item-title">${item.name}</div>
+                    <div class="summary-item-qty">Cantidad: ${item.quantity}</div>
+                    <div class="summary-item-price">$${item.price}</div>
+                </div>
+            `;
+            container.appendChild(div);
+        });
+        document.getElementById('cart-subtotal').textContent = `$${subtotal}`;
+        document.getElementById('cart-total').textContent = `$${subtotal}`;
+    }
+    document.addEventListener('DOMContentLoaded', renderSummaryItems);
+    function selectPayment(method) {
+        const instructions = document.getElementById('payment-instructions');
+        instructions.style.display = 'block';
+        if (method === 'nequi') {
+            instructions.innerHTML = `<strong>Instrucciones para pagar con Nequi:</strong><br>1. Abre tu app Nequi.<br>2. Envía el valor total al número <b>300 000 0000</b>.<br>3. Adjunta el comprobante en el chat o envíalo por WhatsApp.`;
+        } else if (method === 'dale') {
+            instructions.innerHTML = `<strong>Instrucciones para pagar con Dale:</strong><br>1. Abre tu app Dale.<br>2. Envía el valor total al número <b>300 000 0000</b>.<br>3. Adjunta el comprobante en el chat o envíalo por WhatsApp.`;
+        }
+    }
+    function toggleStep(step) {
+        document.querySelectorAll('.checkout-step').forEach((el, idx) => {
+            const content = el.querySelector('.step-content');
+            if (idx === step - 1) {
+                content.style.display = 'block';
+                el.querySelector('.step-header').classList.add('active');
+            } else {
+                content.style.display = 'none';
+                el.querySelector('.step-header').classList.remove('active');
+            }
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function nextStep(current) {
+        toggleStep(current + 1);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+        toggleStep(1);
+        // Aquí puedes cargar los productos y totales en el resumen
+    });
+    </script>
+</body>
+</html> 

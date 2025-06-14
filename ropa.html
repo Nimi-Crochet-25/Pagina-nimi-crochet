@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ropa - Nimi Crochet</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Nimi Crochet</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Productos ▼</a>
+                    <div class="dropdown-content">
+                        <a href="ropa.html">Ropa</a>
+                        <a href="accesorios.html">Accesorios</a>
+                        <a href="amigurumis.html">Amigurumis</a>
+                    </div>
+                </li>
+                <li><a href="index.html#sobremi">Sobre mí</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="productos">
+            <h2>Ropa de Crochet</h2>
+            <div class="productos-grid">
+                <div class="producto-card">
+                    <img src="images/gorros/7b35b2ce85f1c7bb67ae5eb329a59852.jpg" alt="Gorro de crochet">
+                    <h3>Gorro de Crochet</h3>
+                    <p>Gorro tejido a mano, cálido y cómodo para cualquier ocasión.</p>
+                    <button class="cart-action-btn" onclick="cart.addItem({ id: 'gorro1', name: 'Gorro de Crochet', price: 0, image: 'images/gorros/7b35b2ce85f1c7bb67ae5eb329a59852.jpg', quantity: 1 })">Agregar al carrito</button>
+                </div>
+                <div class="producto-card">
+                    <img src="images/gorros/IMG_20230927_144925.jpg" alt="Gorro de crochet">
+                    <h3>Gorro de Crochet</h3>
+                    <p>Gorro tejido a mano, cálido y cómodo para cualquier ocasión.</p>
+                    <button class="cart-action-btn" onclick="cart.addItem({ id: 'gorro2', name: 'Gorro de Crochet', price: 0, image: 'images/gorros/IMG_20230927_144925.jpg', quantity: 1 })">Agregar al carrito</button>
+                </div>
+                <div class="producto-card">
+                    <img src="images/gorros/IMG_20230730_191054.jpg" alt="Gorro de crochet">
+                    <h3>Gorro de Crochet</h3>
+                    <p>Gorro tejido a mano, cálido y cómodo para cualquier ocasión.</p>
+                    <button class="cart-action-btn" onclick="cart.addItem({ id: 'gorro3', name: 'Gorro de Crochet', price: 0, image: 'images/gorros/IMG_20230730_191054.jpg', quantity: 1 })">Agregar al carrito</button>
+                </div>
+                <div class="producto-card">
+                    <img src="images/gorros/IMG_20230525_223024.jpg" alt="Gorro de crochet">
+                    <h3>Gorro de Crochet</h3>
+                    <p>Gorro tejido a mano, cálido y cómodo para cualquier ocasión.</p>
+                    <button class="cart-action-btn" onclick="cart.addItem({ id: 'gorro4', name: 'Gorro de Crochet', price: 0, image: 'images/gorros/IMG_20230525_223024.jpg', quantity: 1 })">Agregar al carrito</button>
+                </div>
+                <div class="producto-card">
+                    <img src="images/gorros/445ee240790df13e1c3a38402e654822.jpg" alt="Gorro de crochet">
+                    <h3>Gorro de Crochet</h3>
+                    <p>Gorro tejido a mano, cálido y cómodo para cualquier ocasión.</p>
+                    <button class="cart-action-btn" onclick="cart.addItem({ id: 'gorro5', name: 'Gorro de Crochet', price: 0, image: 'images/gorros/445ee240790df13e1c3a38402e654822.jpg', quantity: 1 })">Agregar al carrito</button>
+                </div>
+                <div class="producto-card">
+                    <img src="images/guantes/IMG_20230927_123424.jpg" alt="Guante de crochet">
+                    <h3>Guante de Crochet</h3>
+                    <p>Guante tejido a mano, cálido y cómodo para cualquier ocasión.</p>
+                    <button class="cart-action-btn" onclick="cart.addItem({ id: 'guante1', name: 'Guante de Crochet', price: 0, image: 'images/guantes/IMG_20230927_123424.jpg', quantity: 1 })">Agregar al carrito</button>
+                </div>
+                <div class="producto-card">
+                    <img src="images/guantes/IMG_20230927_123142.jpg" alt="Guante de crochet">
+                    <h3>Guante de Crochet</h3>
+                    <p>Guante tejido a mano, cálido y cómodo para cualquier ocasión.</p>
+                    <button class="cart-action-btn" onclick="cart.addItem({ id: 'guante2', name: 'Guante de Crochet', price: 0, image: 'images/guantes/IMG_20230927_123142.jpg', quantity: 1 })">Agregar al carrito</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="main.js"></script>
+    <script src="cart.js"></script>
+</body>
+</html> 

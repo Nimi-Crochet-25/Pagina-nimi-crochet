@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amigurumis - Nimi Crochet</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Nimi Crochet</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Productos ▼</a>
+                    <div class="dropdown-content">
+                        <a href="ropa.html">Ropa</a>
+                        <a href="accesorios.html">Accesorios</a>
+                        <a href="amigurumis.html">Amigurumis</a>
+                    </div>
+                </li>
+                <li><a href="index.html#sobremi">Sobre mí</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="productos">
+            <h2>Amigurumis</h2>
+            <div class="productos-grid">
+                <div class="producto-card">
+                    <img src="images/amigurumis/IMG_20231127_142815.jpg" alt="Amigurumi">
+                    <h3>Amigurumi</h3>
+                    <p>Muñeco tejido a mano, suave y tierno, ideal para niños y coleccionistas.</p>
+                    <button class="cart-action-btn" onclick="cart.addItem({ id: 'amigurumi1', name: 'Amigurumi', price: 0, image: 'images/amigurumis/IMG_20231127_142815.jpg', quantity: 1 })">Agregar al carrito</button>
+                </div>
+                <div class="producto-card">
+                    <img src="images/amigurumis/IMG_20231127_143053.jpg" alt="Amigurumi">
+                    <h3>Amigurumi</h3>
+                    <p>Muñeco tejido a mano, suave y tierno, ideal para niños y coleccionistas.</p>
+                    <button class="cart-action-btn" onclick="cart.addItem({ id: 'amigurumi2', name: 'Amigurumi', price: 0, image: 'images/amigurumis/IMG_20231127_143053.jpg', quantity: 1 })">Agregar al carrito</button>
+                </div>
+                <div class="producto-card">
+                    <img src="images/amigurumis/IMG_20231129_143502.jpg" alt="Amigurumi">
+                    <h3>Amigurumi</h3>
+                    <p>Muñeco tejido a mano, suave y tierno, ideal para niños y coleccionistas.</p>
+                    <button class="cart-action-btn" onclick="cart.addItem({ id: 'amigurumi3', name: 'Amigurumi', price: 0, image: 'images/amigurumis/IMG_20231129_143502.jpg', quantity: 1 })">Agregar al carrito</button>
+                </div>
+                <div class="producto-card">
+                    <img src="images/amigurumis/IMG_20240125_125638961.jpg" alt="Amigurumi">
+                    <h3>Amigurumi</h3>
+                    <p>Muñeco tejido a mano, suave y tierno, ideal para niños y coleccionistas.</p>
+                    <button class="cart-action-btn" onclick="cart.addItem({ id: 'amigurumi4', name: 'Amigurumi', price: 0, image: 'images/amigurumis/IMG_20240125_125638961.jpg', quantity: 1 })">Agregar al carrito</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="main.js"></script>
+    <script src="cart.js"></script>
+</body>
+</html> 
