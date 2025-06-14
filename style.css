@@ -1500,4 +1500,107 @@ h1 {
 
 .payment-logo:hover {
     transform: scale(1.05);
+}
+
+/* Estilos para el carrito de compras */
+.cart-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    gap: 1rem;
+}
+
+.cart-item-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.cart-item-details {
+    flex: 1;
+}
+
+.cart-item-details h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.cart-item-details p {
+    margin: 0;
+    color: #666;
+}
+
+.cart-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cart-item-actions button {
+    background: #f0f0f0;
+    border: none;
+    border-radius: 4px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: background-color 0.2s;
+}
+
+.cart-item-actions button:hover {
+    background: #e0e0e0;
+}
+
+.cart-item-actions .remove-btn {
+    background: #ffebee;
+    color: #d32f2f;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.cart-item-actions .remove-btn:hover {
+    background: #ffcdd2;
+    transform: scale(1.1);
+}
+
+.cart-item-actions .remove-btn i {
+    font-size: 1rem;
+}
+
+#cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #ff4081;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+#cart-items {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+#cart-total {
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 1rem;
+    border-top: 1px solid #eee;
+    text-align: right;
 } 

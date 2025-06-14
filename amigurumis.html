@@ -35,18 +35,18 @@
                 <li class="cart-container">
                     <a href="#" class="cart-icon">
                         <i class="fas fa-shopping-cart"></i>
-                        <span class="cart-count">0</span>
+                        <span id="cart-count">0</span>
                     </a>
                     <div class="cart-dropdown">
-                        <div class="cart-items">
+                        <div id="cart-items">
                             <!-- Los items del carrito se agregarán aquí dinámicamente -->
                         </div>
                         <div class="discount-code">
-                            <input type="text" placeholder="Código de descuento" id="discountCode">
+                            <input type="text" placeholder="Código de descuento" id="discount-code">
                             <button onclick="applyDiscount()">Aplicar</button>
                         </div>
                         <div class="cart-total">
-                            <span>Total: $<span id="cartTotal">0.00</span></span>
+                            <span>Total: $<span id="cart-total">0.00</span></span>
                         </div>
                         <button class="checkout-btn" onclick="goToCheckout()">Ir a pagar</button>
                     </div>
@@ -74,7 +74,7 @@
                         <input type="number" id="quantity-ami1" value="1" min="1" max="10">
                         <button onclick="incrementQuantity('ami1')">+</button>
                     </div>
-                    <button class="comprar-btn" onclick="addToCart('ami1', 'Amigurumi Personalizado')">
+                    <button class="comprar-btn" onclick="addToCart('ami1', 'Amigurumi Personalizado', 35000, 'images/Amigurumi/IMG_20250420_111911.jpg')">
                         Agregar al carrito
                     </button>
                 </div>
@@ -92,7 +92,7 @@
                         <input type="number" id="quantity-ami2" value="1" min="1" max="10">
                         <button onclick="incrementQuantity('ami2')">+</button>
                     </div>
-                    <button class="comprar-btn" onclick="addToCart('ami2', 'Amigurumi Especial')">
+                    <button class="comprar-btn" onclick="addToCart('ami2', 'Amigurumi Especial', 40000, 'images/Amigurumi/IMG_20240630_212517631.jpg')">
                         Agregar al carrito
                     </button>
                 </div>
@@ -117,6 +117,95 @@
         </div>
     </footer>
 
-    <script src="main.js"></script>
+    <script src="cart.js"></script>
+    <script>
+        function decrementQuantity(productId) {
+            const input = document.getElementById(`quantity-${productId}`);
+            if (input) {
+                const currentValue = parseInt(input.value);
+                if (currentValue > 1) {
+                    input.value = currentValue - 1;
+                }
+            }
+        }
+
+        function incrementQuantity(productId) {
+            const input = document.getElementById(`quantity-${productId}`);
+            if (input) {
+                const currentValue = parseInt(input.value);
+                if (currentValue < 10) {
+                    input.value = currentValue + 1;
+                }
+            }
+        }
+
+        function addToCart(productId, name, price, image) {
+            const quantity = parseInt(document.getElementById(`quantity-${productId}`).value);
+            cart.addItem({
+                id: productId,
+                name: name,
+                price: price,
+                image: image,
+                quantity: quantity
+            });
+        }
+    </script>
+    <style>
+        .cart-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
+        }
+
+        .cart-message-content {
+            text-align: center;
+        }
+
+        .cart-message-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            justify-content: center;
+        }
+
+        .cart-message-buttons button {
+            padding: 5px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .cart-message-buttons button:first-child {
+            background: #ffebee;
+            color: #d32f2f;
+        }
+
+        .cart-message-buttons button:last-child {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .cart-message-buttons button:hover {
+            opacity: 0.9;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
 </body>
 </html> 

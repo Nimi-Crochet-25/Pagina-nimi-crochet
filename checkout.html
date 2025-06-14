@@ -96,33 +96,33 @@
                 <!-- Columna derecha: Resumen del pedido -->
                 <div class="order-summary">
                     <h2>Resumen del Pedido</h2>
-                    <div class="cart-items" id="checkoutCartItems">
+                    <div id="cart-items">
                         <!-- Los items se cargarán dinámicamente -->
                     </div>
                     
                     <div class="discount-section">
                         <div class="discount-code">
-                            <input type="text" placeholder="Código de descuento" id="checkoutDiscountCode">
-                            <button onclick="applyCheckoutDiscount()">Aplicar</button>
+                            <input type="text" placeholder="Código de descuento" id="discount-code">
+                            <button onclick="applyDiscount()">Aplicar</button>
                         </div>
                     </div>
 
                     <div class="order-totals">
                         <div class="subtotal">
                             <span>Subtotal</span>
-                            <span id="subtotalAmount">$0.00</span>
+                            <span id="subtotal-amount">$0.00</span>
                         </div>
                         <div class="shipping">
                             <span>Envío</span>
-                            <span id="shippingAmount">$5.00</span>
+                            <span id="shipping-amount">$5.00</span>
                         </div>
                         <div class="discount">
                             <span>Descuento</span>
-                            <span id="discountAmount">-$0.00</span>
+                            <span id="discount-amount">-$0.00</span>
                         </div>
                         <div class="total">
                             <span>Total</span>
-                            <span id="totalAmount">$0.00</span>
+                            <span id="cart-total">$0.00</span>
                         </div>
                     </div>
 
@@ -143,61 +143,24 @@
         <p>&copy; 2025 Nimi Crochet. Todos los derechos reservados.</p>
     </footer>
 
+    <script src="cart.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Cargar los items del carrito desde localStorage
-            loadCheckoutItems();
-        });
-
-        function loadCheckoutItems() {
-            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-            const container = document.getElementById('checkoutCartItems');
-            let subtotal = 0;
-
-            container.innerHTML = '';
-            
-            cartItems.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                subtotal += itemTotal;
-
-                const itemElement = document.createElement('div');
-                itemElement.className = 'checkout-item';
-                itemElement.innerHTML = `
-                    <div class="item-info">
-                        <span class="item-name">${item.name}</span>
-                        <span class="item-quantity">x${item.quantity}</span>
-                    </div>
-                    <span class="item-price">$${itemTotal.toFixed(2)}</span>
-                `;
-                container.appendChild(itemElement);
-            });
-
-            // Actualizar totales
-            document.getElementById('subtotalAmount').textContent = `$${subtotal.toFixed(2)}`;
-            updateOrderTotal();
-        }
-
-        function updateOrderTotal() {
-            const subtotal = parseFloat(document.getElementById('subtotalAmount').textContent.slice(1));
-            const shipping = parseFloat(document.getElementById('shippingAmount').textContent.slice(1));
-            const discount = parseFloat(document.getElementById('discountAmount').textContent.slice(2));
-            
-            const total = subtotal + shipping - discount;
-            document.getElementById('totalAmount').textContent = `$${total.toFixed(2)}`;
-        }
-
-        function applyCheckoutDiscount() {
-            const code = document.getElementById('checkoutDiscountCode').value;
-            // Aquí puedes implementar la lógica de validación de códigos
-            alert('Código de descuento aplicado: ' + code);
-        }
-
         function completeOrder() {
+            if (cart.items.length === 0) {
+                alert('El carrito está vacío');
+                return;
+            }
+
             // Aquí puedes implementar la lógica de procesamiento del pedido
             alert('¡Gracias por tu compra! Tu pedido ha sido procesado.');
-            // Limpiar el carrito
-            localStorage.removeItem('cartItems');
+            cart.clearCart();
             window.location.href = 'index.html';
+        }
+
+        function applyDiscount() {
+            const code = document.getElementById('discount-code').value;
+            // Aquí puedes implementar la lógica de validación de códigos
+            alert('Código de descuento aplicado: ' + code);
         }
     </script>
 </body>
