@@ -400,4 +400,27 @@ async function handleContactSubmit(event) {
         console.error('Error al enviar el mensaje:', error);
         alert('Error al enviar el mensaje. Por favor intente nuevamente.');
     }
+}
+
+// Pausar videos de fondo al segundo 4 en index.html (ahora en bucle)
+function loopHeroVideosAt(timeLimit) {
+    const desktopVideo = document.getElementById('hero-video-desktop');
+    const mobileVideo = document.getElementById('hero-video-mobile');
+    [desktopVideo, mobileVideo].forEach(video => {
+        if (video) {
+            video.addEventListener('timeupdate', function () {
+                if (video.currentTime >= timeLimit) {
+                    video.currentTime = 0;
+                    video.play();
+                }
+            });
+        }
+    });
+}
+
+// Llamar la función solo en index.html
+if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname === '/index.html') {
+    document.addEventListener('DOMContentLoaded', function () {
+        loopHeroVideosAt(4);
+    });
 } 
