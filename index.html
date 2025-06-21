@@ -83,10 +83,21 @@
         <section class="medios-pago">
             <h2>Medios de pago</h2>
             <div class="medios-pago-logos">
-                <img src="images/Medios de pago/nequi-logo-png.png" alt="Nequi" class="pago-logo">
+                <img src="images/Medios de pago/nequi-logo-png.png" alt="Nequi" class="pago-logo" id="nequi-logo">
                 <img src="images/Medios de pago/Dale logo.png" alt="Dale" class="pago-logo">
             </div>
         </section>
+
+        <!-- Modal para el código QR de Nequi -->
+        <div id="nequi-qr-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2>Paga con Nequi</h2>
+                <p>Escanea el código QR con tu app de Nequi.</p>
+                <img src="images/Codigo QR Nequi/nequi-qr.jpeg" alt="Código QR Nequi" class="qr-img-modal">
+            </div>
+        </div>
+
         <footer>
             <div class="footer-content">
                 <p>&copy; 2025 Nimi Crochet. Todos los derechos reservados.</p>
@@ -117,6 +128,34 @@
     <script src="main.js"></script>
     <script src="cart.js"></script>
     <script>
+    // Script para el modal de Nequi QR
+    var modal = document.getElementById('nequi-qr-modal');
+    var nequiLogo = document.getElementById('nequi-logo');
+    var closeBtn = document.querySelector('#nequi-qr-modal .close-button');
+
+    nequiLogo.onclick = function() {
+        modal.style.display = 'flex';
+        setTimeout(() => {
+            modal.classList.add('show-modal');
+        }, 10);
+    }
+
+    closeBtn.onclick = function() {
+        modal.classList.remove('show-modal');
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300);
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.classList.remove('show-modal');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
+    }
+
     function isMobile() {
         return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     }
